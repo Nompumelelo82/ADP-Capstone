@@ -1,25 +1,24 @@
-package za.ac.cput.repository.impl;
+package za.ac.cput.repository;
 
 
 
 import za.ac.cput.domain.Shipment;
-import za.ac.cput.repository.IRepository;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class ShipmentRepositoryImpl implements IRepository<Shipment, String> {
+public class ShipmentRepository implements IRepository<Shipment, String> {
 
-    private static ShipmentRepositoryImpl instance;
+    private static ShipmentRepository instance;
     private Map<String, Shipment> shipmentMap;
 
-    private ShipmentRepositoryImpl() {
+    private ShipmentRepository() {
         shipmentMap = new HashMap<>();
     }
 
-    public static ShipmentRepositoryImpl getInstance() {
+    public static ShipmentRepository getInstance() {
         if (instance == null) {
-            instance = new ShipmentRepositoryImpl();
+            instance = new ShipmentRepository();
         }
         return instance;
     }

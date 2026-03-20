@@ -1,4 +1,4 @@
-package za.ac.cput.repository.impl;
+package za.ac.cput.repository;
 
 
 
@@ -6,16 +6,17 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.Shipment;
 import za.ac.cput.factory.ShipmentFactory;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ShipmentRepositoryImplTest {
+public class ShipmentRepositoryTest {
 
-    private ShipmentRepositoryImpl repository;
+    private ShipmentRepository repository;
     private Shipment shipment;
 
     @BeforeEach
     void setUp() {
-        repository = ShipmentRepositoryImpl.getInstance();
+        repository = ShipmentRepository.getInstance();
         shipment = ShipmentFactory.createShipment(
                 "SHP001",
                 "Cape Town",
