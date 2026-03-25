@@ -6,7 +6,7 @@ import za.ac.cput.util.Helper;
 public class CustomerFactory {
     public static Customer createCustomer(String customerId,
                                           String customerName,
-                                          String phoneNumber, String address){
+                                          String phoneNumber, String email ,String address){
 
         if(Helper.isEmptyOrNull(customerId) ||
            Helper.isEmptyOrNull(customerName) ||
@@ -17,10 +17,16 @@ public class CustomerFactory {
 
         }
 
+        if(!Helper.isValidEmail(email)){
+            return null;
+        }
+
+
         return new Customer.Builder()
                 .setCustomerId(customerId)
                 .setCustomerName(customerName)
                 .setPhoneNumber(phoneNumber)
+                .setEmail(email)
                 .setAddress(address)
                 .build();
 

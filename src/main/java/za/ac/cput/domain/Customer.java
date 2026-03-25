@@ -4,16 +4,18 @@ public class Customer {
  private String customerId;
  private String customerName;
  private String phoneNumber;
+ private String email;
  private String address;
 
  public Customer() {
 
  }
 
-    public Customer(String customerId, String customerName, String phoneNumber, String address) {
+    public Customer(String customerId, String customerName, String phoneNumber, String email ,String address) {
         this.customerId = customerId;
         this.customerName = customerName;
         this.phoneNumber = phoneNumber;
+        this.email = email;
         this.address = address;
     }
 
@@ -21,6 +23,7 @@ public class Customer {
         this.customerId = builder.customerId;
         this.customerName = builder.customerName;
         this.phoneNumber = builder.phoneNumber;
+        this.email = builder.email;
         this.address = builder.address;
     }
 
@@ -36,6 +39,10 @@ public class Customer {
         return phoneNumber;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -47,6 +54,7 @@ public class Customer {
                 "customerId='" + customerId + '\'' +
                 ", customerName='" + customerName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
                 '}';
     }
@@ -55,6 +63,7 @@ public class Customer {
         private String customerId;
         private String customerName;
         private String phoneNumber;
+        private String email;
         private String address;
 
 
@@ -73,6 +82,11 @@ public class Customer {
             return this;
         }
 
+        public Builder setEmail(String email) {
+            this.email = email;
+            return this;
+        }
+
         public Builder setAddress(String address) {
             this.address = address;
             return this;
@@ -82,6 +96,7 @@ public class Customer {
             this.customerId = customer.customerId;
             this.customerName = customer.customerName;
             this.phoneNumber = customer.phoneNumber;
+            this.email = customer.email;
             this.address = customer.address;
 
             return this;

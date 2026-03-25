@@ -15,8 +15,9 @@ public class CustomerRepositoryTest {
     void setUp() {
         repository = CustomerRepository.getRepository();
         repository.getAll().clear();
-        customer = CustomerFactory.createCustomer("CUST-23451", "Yamkela", "0732510842",
-                "14 Aquarius Av Sandrift Milnerton 7441");
+        customer = CustomerFactory.createCustomer("CUST-23451", "Yamkela", "0732510842"
+                ,"yamkela197@gmail.com"
+                ,"14 Aquarius Av Sandrift Milnerton 7441");
     }
     @Test
     void testCreate() {
