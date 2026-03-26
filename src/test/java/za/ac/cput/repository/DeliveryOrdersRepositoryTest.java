@@ -34,23 +34,22 @@ class DeliveryOrdersRepositoryTest {
     void b_create() {
         DeliveryOrders created = repository.create(order1);
         assertNotNull(created);
-        System.out.println("Created: " + created);
+        System.out.println("Order Created");
     }
 
     @Test
     void c_read() {
         DeliveryOrders read = repository.read(order1.getOrderId());
         assertEquals(order1.getOrderId(), read.getOrderId());
-        System.out.println("Order: "+ read);
+        System.out.println("Order: "+"\n"+read+"\n");
     }
 
     @Test
     void d_update() {
-        DeliveryOrders newDeliveryOrder = DeliveryOrdersFactory.createDeliveryOrder("#001",
-                "12345",
-                order1.getOrderDate(), order1.getDeliveryDate(),
-                order1.getDeliveryStatus(),order1.getPaymentStatus(),
-                19990.0f,"Drop off infront of door");
+        DeliveryOrders newDeliveryOrder = new DeliveryOrders.Builder()
+                .copy(order1)
+                .setSpecialInstructions("Drop off in front of the door")
+                .build();
 
         DeliveryOrders update = repository.update(newDeliveryOrder);
         assertNotNull(update);
