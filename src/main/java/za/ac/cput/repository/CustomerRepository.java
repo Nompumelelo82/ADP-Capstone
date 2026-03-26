@@ -2,16 +2,18 @@ package za.ac.cput.repository;
 
 import za.ac.cput.domain.Customer;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class CustomerRepository implements ICustomerRepository {
 
     private static CustomerRepository repository = null;
-    private Set<Customer> customerList;
+    private List<Customer> customerList;
 
     private CustomerRepository() {
-        customerList = new HashSet<>();
+        customerList = new ArrayList<>();
     }
 
     public static CustomerRepository getRepository() {
@@ -59,10 +61,8 @@ public class CustomerRepository implements ICustomerRepository {
         return false;
     }
 
-
-
     @Override
-    public Set<Customer> getAll() {
+    public List<Customer> getAll() {
         return customerList;
     }
 
