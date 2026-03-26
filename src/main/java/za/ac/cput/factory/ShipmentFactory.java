@@ -1,27 +1,35 @@
 package za.ac.cput.factory;
 
 import za.ac.cput.domain.Shipment;
+import za.ac.cput.util.Helper;
 
 public class ShipmentFactory {
 
-    public static Shipment createShipment(String shipmentId,
-                                          String origin,
-                                          String destination,
-                                          double weight,
-                                          String status,
-                                          String estimatedDeliveryDate) {
-        if (shipmentId == null || shipmentId.isEmpty()) return null;
-        if (origin == null || origin.isEmpty()) return null;
-        if (destination == null || destination.isEmpty()) return null;
-        if (status == null || status.isEmpty()) return null;
+    public static Shipment createShipment(String shipmentId, String orderId,
+                                          String routeId,
+                                          String originAddress,
+                                          String destinationAddress,
+                                          Shipment.Status status,
+                                          boolean fragile) {
+
+        if(Helper.isEmptyOrNull(shipmentId)|| Helper.isEmptyOrNull(orderId)
+           || Helper.isEmptyOrNull(routeId)|| Helper.isEmptyOrNull(originAddress)|| Helper.isEmptyOrNull(destinationAddress)){
+            return null;
+        }
+
+        if(Helper.isValidType(status)){
+            return null;
+        }
+
 
         return new Shipment.Builder()
                 .setShipmentId(shipmentId)
-                .setOrigin(origin)
-                .setDestination(destination)
-                .setWeight(weight)
+                .setOrderId(orderId)
+                .setRouteId(routeId)
+                .setOriginAddress(originAddress)
+                .setDestinationAddress(destinationAddress)
                 .setStatus(status)
-                .setEstimatedDeliveryDate(estimatedDeliveryDate)
+                .setFragile(fragile)
                 .build();
     }
 }

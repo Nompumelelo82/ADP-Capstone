@@ -1,8 +1,9 @@
 package za.ac.cput.repository;
 
-public interface IShipmentRepository<T, ID> {
-    T create(T t);
-    T read(ID id);
-    T update(T t);
-    boolean delete(ID id);
+import za.ac.cput.domain.Shipment;
+
+import java.util.List;
+
+public interface IShipmentRepository extends IRepository<Shipment, String> {
+    List<Shipment> getAllShipments();
 }

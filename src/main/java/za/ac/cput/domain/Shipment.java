@@ -1,97 +1,144 @@
 package za.ac.cput.domain;
 
 public class Shipment {
-    private String shipmentId;
-    private String origin;
-    private String destination;
-    private double weight;
-    private String status;
-    private String estimatedDeliveryDate;
 
-    private Shipment(Builder builder) {
-        this.shipmentId = builder.shipmentId;
-        this.origin = builder.origin;
-        this.destination = builder.destination;
-        this.weight = builder.weight;
+    public enum Status{
+        CREATED,
+        READY_FOR_PICKUP,
+        PICKED_UP,
+        IN_TRANSIT,
+        AT_HUB,
+        OUT_FOR_DELIVERY,
+        DELIVERED,
+        DELAYED,
+        ON_HOLD,
+        FAILED_DELIVERY,
+        RETURN_INITIATED,
+        RETURN_IN_TRANSIT,
+        RETURNED,
+        CANCELLED,
+        LOST,
+        DAMAGED
+    }
+
+    private String shipmentId;
+    private String orderId;
+    private String routeId;
+    private String originAddress;
+    private String destinationAddress;
+    private Status status;
+    private boolean fragile;
+
+    public Shipment() {
+
+    }
+
+    public Shipment(String shipmentId, String orderId, String routeId, String originAddress, String destinationAddress, Status status, boolean fragile) {
+        this.shipmentId = shipmentId;
+        this.orderId = orderId;
+        this.routeId = routeId;
+        this.originAddress = originAddress;
+        this.destinationAddress = destinationAddress;
+        this.status = status;
+        this.fragile = fragile;
+    }
+
+    public Shipment(Builder builder){
+        this.shipmentId= builder.shipmentId;
+        this.orderId= builder.orderId;
+        this.routeId= builder.routeId;
+        this.originAddress= builder.originAddress;
+        this.destinationAddress = builder.destinationAddress;
         this.status = builder.status;
-        this.estimatedDeliveryDate = builder.estimatedDeliveryDate;
+        this.fragile = builder.fragile;
     }
 
     public String getShipmentId() {
         return shipmentId;
     }
 
-    public String getOrigin() {
-        return origin;
+    public String getOrderId() {
+        return orderId;
     }
 
-    public String getDestination() {
-        return destination;
+    public String getRouteId() {
+        return routeId;
     }
 
-    public double getWeight() {
-        return weight;
+    public String getOriginAddress() {
+        return originAddress;
     }
 
-    public String getStatus() {
+    public String getDestinationAddress() {
+        return destinationAddress;
+    }
+
+    public Status getStatus() {
         return status;
     }
 
-    public String getEstimatedDeliveryDate() {
-        return estimatedDeliveryDate;
+    public boolean isFragile() {
+        return fragile;
     }
 
     @Override
     public String toString() {
         return "Shipment{" +
                 "shipmentId='" + shipmentId + '\'' +
-                ", origin='" + origin + '\'' +
-                ", destination='" + destination + '\'' +
-                ", weight=" + weight +
-                ", status='" + status + '\'' +
-                ", estimatedDeliveryDate='" + estimatedDeliveryDate + '\'' +
+                ", orderId='" + orderId + '\'' +
+                ", routeId='" + routeId + '\'' +
+                ", originAddress='" + originAddress + '\'' +
+                ", destinationAddress='" + destinationAddress + '\'' +
+                ", status=" + status +
+                ", fragile=" + fragile +
                 '}';
     }
 
     public static class Builder {
         private String shipmentId;
-        private String origin;
-        private String destination;
-        private double weight;
-        private String status;
-        private String estimatedDeliveryDate;
+        private String orderId;
+        private String routeId;
+        private String originAddress;
+        private String destinationAddress;
+        private Status status;
+        private boolean fragile;
 
-        public Builder setShipmentId(String shipmentId) {
-            this.shipmentId = shipmentId;
+        public Builder setShipmentId(String shipmentId){
+            this.shipmentId=shipmentId;
             return this;
         }
 
-        public Builder setOrigin(String origin) {
-            this.origin = origin;
+        public Builder setOrderId(String orderId){
+            this.orderId=orderId;
             return this;
         }
 
-        public Builder setDestination(String destination) {
-            this.destination = destination;
+        public Builder setRouteId(String routeId){
+            this.routeId=routeId;
             return this;
         }
 
-        public Builder setWeight(double weight) {
-            this.weight = weight;
+        public Builder setOriginAddress(String originAddress){
+            this.originAddress=originAddress;
             return this;
         }
 
-        public Builder setStatus(String status) {
+        public Builder setDestinationAddress(String destinationAddress){
+            this.destinationAddress = destinationAddress;
+            return this;
+        }
+
+        public Builder setStatus(Status status){
             this.status = status;
             return this;
         }
 
-        public Builder setEstimatedDeliveryDate(String estimatedDeliveryDate) {
-            this.estimatedDeliveryDate = estimatedDeliveryDate;
+        public Builder setFragile(boolean fragile){
+            this.fragile = fragile;
             return this;
         }
 
-        public Shipment build() {
+        public Shipment build(){
             return new Shipment(this);
         }
     }

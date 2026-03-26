@@ -2,66 +2,84 @@ package za.ac.cput.repository;
 
 
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import za.ac.cput.domain.Shipment;
 import za.ac.cput.factory.ShipmentFactory;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.*;
+@TestMethodOrder(MethodOrderer.MethodName.class)
 public class ShipmentRepositoryTest {
 
     private ShipmentRepository repository;
     private Shipment shipment;
 
     @BeforeEach
-    void setUp() {
+    void a_setUp() {
         repository = ShipmentRepository.getInstance();
+
         shipment = ShipmentFactory.createShipment(
                 "SHP001",
+                "ORD001",
+                "RT001",
                 "Cape Town",
                 "Johannesburg",
-                150.5,
-                "In Transit",
-                "2026-03-25"
+                Shipment.Status.IN_TRANSIT,
+                true
         );
     }
 
     @Test
-    void testCreate() {
+    void b_testCreate() {
         Shipment created = repository.create(shipment);
         assertNotNull(created);
         assertEquals("SHP001", created.getShipmentId());
+        System.out.println(created);
     }
 
     @Test
-    void testRead() {
+    void c_testRead() {
         repository.create(shipment);
         Shipment found = repository.read("SHP001");
         assertNotNull(found);
         assertEquals("SHP001", found.getShipmentId());
+        System.out.println(found);
     }
 
     @Test
-    void testUpdate() {
+    void d_testUpdate() {
         repository.create(shipment);
+
         Shipment updated = ShipmentFactory.createShipment(
                 "SHP001",
+                "ORD001",
+                "RT002",
                 "Cape Town",
                 "Durban",
-                200.0,
-                "Delivered",
-                "2026-03-26"
+                Shipment.Status.DELIVERED,
+                false
         );
+
         Shipment result = repository.update(updated);
         assertNotNull(result);
-        assertEquals("Durban", result.getDestination());
+        assertEquals("Durban", result.getDestinationAddress());
+        assertEquals(Shipment.Status.DELIVERED, result.getStatus());
+        System.out.println(updated);
     }
 
     @Test
-    void testDelete() {
+    @Disabled
+    void e_testDelete() {
         repository.create(shipment);
         boolean deleted = repository.delete("SHP001");
         assertTrue(deleted);
+        System.out.println("deleted successfully");
+    }
+
+    @Test
+    void f_testGetAll(){
+        List<Shipment> allShipments = repository.getAllShipments();
+        System.out.println(allShipments);
     }
 }

@@ -1,7 +1,5 @@
 package za.ac.cput.factory;
 
-
-
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.Shipment;
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,43 +10,51 @@ public class ShipmentFactoryTest {
     public void testCreateShipment_Success() {
         Shipment shipment = ShipmentFactory.createShipment(
                 "SHP001",
+                "ORD001",
+                "RT001",
                 "Cape Town",
                 "Johannesburg",
-                150.5,
-                "In Transit",
-                "2026-03-25"
+                Shipment.Status.IN_TRANSIT,
+                true
         );
+
         assertNotNull(shipment);
         assertEquals("SHP001", shipment.getShipmentId());
-        assertEquals("Cape Town", shipment.getOrigin());
-        assertEquals("Johannesburg", shipment.getDestination());
-        assertEquals(150.5, shipment.getWeight());
-        assertEquals("In Transit", shipment.getStatus());
+        assertEquals("ORD001", shipment.getOrderId());
+        assertEquals("RT001", shipment.getRouteId());
+        assertEquals("Cape Town", shipment.getOriginAddress());
+        assertEquals("Johannesburg", shipment.getDestinationAddress());
+        assertEquals(Shipment.Status.IN_TRANSIT, shipment.getStatus());
+        assertTrue(shipment.isFragile());
     }
 
     @Test
     public void testCreateShipment_NullShipmentId() {
         Shipment shipment = ShipmentFactory.createShipment(
                 null,
+                "ORD002",
+                "RT002",
                 "Cape Town",
-                "Johannesburg",
-                150.5,
-                "In Transit",
-                "2026-03-25"
+                "Durban",
+                Shipment.Status.IN_TRANSIT,
+                false
         );
+
         assertNull(shipment);
     }
 
     @Test
-    public void testCreateShipment_EmptyOrigin() {
+    public void testCreateShipment_EmptyOriginAddress() {
         Shipment shipment = ShipmentFactory.createShipment(
-                "SHP002",
+                "SHP003",
+                "ORD003",
+                "RT003",
                 "",
-                "Johannesburg",
-                150.5,
-                "In Transit",
-                "2026-03-25"
+                "Pretoria",
+                Shipment.Status.DELIVERED,
+                false
         );
+
         assertNull(shipment);
     }
 }

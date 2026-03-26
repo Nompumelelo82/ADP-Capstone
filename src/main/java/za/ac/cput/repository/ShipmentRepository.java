@@ -4,16 +4,18 @@ package za.ac.cput.repository;
 
 import za.ac.cput.domain.Shipment;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class ShipmentRepository implements IRepository<Shipment, String> {
+public class ShipmentRepository implements IShipmentRepository{
 
     private static ShipmentRepository instance;
-    private Map<String, Shipment> shipmentMap;
+    private List<Shipment> shipmentList;
 
     private ShipmentRepository() {
-        shipmentMap = new HashMap<>();
+        shipmentList = new ArrayList<>();
     }
 
     public static ShipmentRepository getInstance() {
@@ -25,30 +27,58 @@ public class ShipmentRepository implements IRepository<Shipment, String> {
 
     @Override
     public Shipment create(Shipment shipment) {
-        shipmentMap.put(shipment.getShipmentId(), shipment);
-        return shipment;
-    }
-
-    @Override
-    public Shipment read(String shipmentId) {
-        return shipmentMap.get(shipmentId);
-    }
-
-    @Override
-    public Shipment update(Shipment shipment) {
-        if (shipmentMap.containsKey(shipment.getShipmentId())) {
-            shipmentMap.put(shipment.getShipmentId(), shipment);
+        boolean success = shipmentList.add(shipment);
+        if(success){
             return shipment;
         }
         return null;
     }
 
     @Override
-    public boolean delete(String shipmentId) {
-        if (shipmentMap.containsKey(shipmentId)) {
-            shipmentMap.remove(shipmentId);
-            return true;
+    public Shipment read(String shipmentId) {
+        for(Shipment shipments: shipmentList){
+            if(shipments.getShipmentId().equals(shipmentId)){
+                return shipments;
+            }
         }
-        return false;
+        return null;
+    }
+
+    @Override
+    public Shipment update(Shipment shipment) {
+        String id = shipment.getShipmentId();
+        Shipment oldShipment = read(id);
+
+        if(oldShipment==null){
+            return null;
+        }
+
+        boolean success = shipmentList.remove(oldShipment);
+
+        if(!success){
+            return null;
+            }
+
+        if(shipmentList.add(shipment)){
+            return shipment;
+        }
+        return null;
+        }
+
+
+
+    @Override
+    public boolean delete(String shipmentId) {
+        Shipment shipmentToDelete = read(shipmentId);
+
+        if(shipmentToDelete==null){
+            return false;
+        }
+        return shipmentList.remove(shipmentToDelete);
+    }
+
+    @Override
+    public List<Shipment> getAllShipments() {
+        return shipmentList;
     }
 }
