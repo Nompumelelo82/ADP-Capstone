@@ -37,6 +37,7 @@ public class VehicleFactoryTest {
         assertEquals(Vehicle.VehicleStatus.AVAILABLE, vehicle.getCurrentStatus());
         assertEquals(18000.0f, vehicle.getMileage());
         assertNotNull(vehicle.getLastService());
+        System.out.println("successfully created a vehicle");
     }
     @Test
             void testCreateVehicle_NullVehicleId() {
