@@ -1,8 +1,6 @@
 package za.ac.cput.repository;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import za.ac.cput.domain.DeliveryOrders;
 import za.ac.cput.domain.Driver;
 import za.ac.cput.factory.DriverFactory;
@@ -11,19 +9,20 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@TestMethodOrder(MethodOrderer.MethodName.class)
 public class DriverRepositoryTest {
     private DriverRepository repository;
     private Driver driver;
 
     @BeforeEach
-    void setUp() {
+    void a_setUp() {
         repository = DriverRepository.getInstance();
         driver = DriverFactory.buildDriver(
                 "Peter", "Burger", "LIC123456", "0821234567", true);
     }
 
     @Test
-    void testCreate() {
+    void b_testCreate() {
         Driver created = repository.create(driver);
         assertNotNull(created);
         assertEquals(driver.getId(), created.getId());
@@ -31,7 +30,7 @@ public class DriverRepositoryTest {
     }
 
     @Test
-    void testRead() {
+    void c_testRead() {
         repository.create(driver);
         Driver read = repository.read(driver.getId());
         assertNotNull(read);
@@ -40,7 +39,7 @@ public class DriverRepositoryTest {
     }
 
     @Test
-    void testUpdate() {
+    void d_testUpdate() {
         repository.create(driver);
         Driver updated = new Driver.Builder()
                 .setId(driver.getId())
@@ -58,14 +57,14 @@ public class DriverRepositoryTest {
 
     @Test
     @Disabled
-    void testDelete() {
+    void e_testDelete() {
         repository.create(driver);
         boolean deleted = repository.delete(driver.getId());
         assertTrue(deleted);
         assertNull(repository.read(driver.getId()));
     }
     @Test
-    void testGetAllDrivers() {
+    void f_testGetAllDrivers() {
         List<Driver> allDrivers = repository.getAllDrivers();
         System.out.println("All Drivers: "+ allDrivers);
     }

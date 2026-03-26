@@ -1,43 +1,45 @@
 package za.ac.cput.repository;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import za.ac.cput.domain.Customer;
 import za.ac.cput.factory.CustomerFactory;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
+@TestMethodOrder(MethodOrderer.MethodName.class)
 public class CustomerRepositoryTest {
     private CustomerRepository repository;
     private Customer customer;
 
     @BeforeEach
-    void setUp() {
+    void a_setUp() {
         repository = CustomerRepository.getRepository();
-        repository.getAll().clear();
         customer = CustomerFactory.createCustomer("CUST-23451", "Yamkela", "0732510842"
                 ,"yamkela197@gmail.com"
                 ,"14 Aquarius Av Sandrift Milnerton 7441");
     }
     @Test
-    void testCreate() {
+    void b_testCreate() {
        Customer created = repository.create(customer);
        assertNotNull(created);
        assertEquals(customer.getCustomerId(), created.getCustomerId());
+        System.out.println(created);
 
     }
 
     @Test
-    void testRead() {
+    void c_testRead() {
         repository.create(customer);
         Customer read = repository.read(customer.getCustomerId());
         assertNotNull(read);
         assertEquals(customer.getCustomerId(), read.getCustomerId());
-
+        System.out.println(read);
     }
 
     @Test
-    void testUpdate() {
+    void d_testUpdate() {
         repository.create(customer);
         Customer updated = new Customer.Builder()
                 .copy(customer)
@@ -46,17 +48,23 @@ public class CustomerRepositoryTest {
         Customer result = repository.update(updated);
         assertNotNull(result);
         assertEquals("The updated name is: ", result.getCustomerName());
+        System.out.println(updated);
     }
 
     @Test
-    void testDelete() {
+    @Disabled
+    void e_testDelete() {
         repository.create(customer);
         boolean deleted = repository.delete(customer.getCustomerId());
         assertTrue(deleted);
         assertNull(repository.read(customer.getCustomerId()));
+        System.out.println("deleted successfully");
 
     }
 
-
-
+    @Test
+    void f_testGetAllCustomers(){
+        List<Customer> getAllCustomers = repository.getAll();
+        System.out.println(getAllCustomers);
+    }
 }

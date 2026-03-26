@@ -8,9 +8,7 @@ Date:2026
  */
 
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import za.ac.cput.domain.Vehicle;
 import za.ac.cput.factory.VehicleFactory;
 
@@ -19,13 +17,14 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@TestMethodOrder(MethodOrderer.MethodName.class)
 public class VehicleRepositoryTest {
 
     private VehicleRepository repository;
     private Vehicle vehicle;
 
     @BeforeEach
-    void setUp() {
+    void a_setUp() {
         repository = (VehicleRepository) VehicleRepository.getRepository();
 
         vehicle = VehicleFactory.createVehicle(
@@ -40,14 +39,14 @@ public class VehicleRepositoryTest {
     }
 
     @Test
-    void testCreate() {
+    void b_testCreate() {
         Vehicle created = repository.create(vehicle);
         assertNotNull(created);
         assertEquals(vehicle.getVehicleId(), created.getVehicleId());
     }
 
     @Test
-    void testRead() {
+    void c_testRead() {
         repository.create(vehicle);
         Vehicle read = repository.read(vehicle.getVehicleId());
         assertNotNull(read);
@@ -55,7 +54,7 @@ public class VehicleRepositoryTest {
     }
 
     @Test
-    void testUpdate() {
+    void d_testUpdate() {
         repository.create(vehicle);
 
         Vehicle updated = new Vehicle.Builder()
@@ -76,7 +75,7 @@ public class VehicleRepositoryTest {
 
     @Test
     @Disabled
-    void testDelete() {
+    void e_testDelete() {
         repository.create(vehicle);
         boolean deleted = repository.delete(vehicle.getVehicleId());
 
@@ -84,7 +83,7 @@ public class VehicleRepositoryTest {
     }
 
     @Test
-    void testGetAll(){
+    void f_testGetAll(){
         List<Vehicle> allVehicles = repository.getAll();
         System.out.println("All Vehicles: "+ allVehicles);
 
