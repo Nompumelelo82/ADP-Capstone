@@ -5,6 +5,13 @@ import za.ac.cput.util.Helper;
 
 import java.time.LocalDate;
 
+/*
+DeliveryOrdersFactory.java
+Delivery Orders module class
+Author: Ryle Peter May (230333907)
+Date: 2026
+ */
+
 public class DeliveryOrdersFactory {
     public static DeliveryOrders createDeliveryOrder(String orderId, String customerId,
                                                      LocalDate orderDate, LocalDate deliveryDate,

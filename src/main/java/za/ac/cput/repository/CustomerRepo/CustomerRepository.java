@@ -5,6 +5,13 @@ import za.ac.cput.domain.Customer;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+CustomerRepository.java
+Customer module class
+Author: YAMKELA MGCUBHE (222040114)
+Date: 2026
+ */
+
 public class CustomerRepository implements ICustomerRepository {
 
     private static CustomerRepository repository = null;

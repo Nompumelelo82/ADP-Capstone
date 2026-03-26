@@ -5,6 +5,13 @@ import za.ac.cput.domain.Customer;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/*
+CustomerFactoryTest.java
+Customer module class
+Author: YAMKELA MGCUBHE (222040114)
+Date: 2026
+ */
+
 public class CustomerFactoryTest {
     @Test
     void createCustomer_Success() {

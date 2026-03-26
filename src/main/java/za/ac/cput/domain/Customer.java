@@ -1,5 +1,11 @@
 package za.ac.cput.domain;
 
+/*
+Customer.java
+Customer module class
+Author: YAMKELA MGCUBHE (222040114)
+Date: 2026
+ */
 public class Customer {
  private String customerId;
  private String customerName;

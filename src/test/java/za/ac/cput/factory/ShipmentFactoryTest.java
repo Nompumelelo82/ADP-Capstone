@@ -4,6 +4,13 @@ import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.Shipment;
 import static org.junit.jupiter.api.Assertions.*;
 
+/*
+ShipmentFactoryTest.java
+Shipment module class
+Author: NOMPUMELELO MBATHA (240256727)
+Date: 2026
+ */
+
 public class ShipmentFactoryTest {
 
     @Test

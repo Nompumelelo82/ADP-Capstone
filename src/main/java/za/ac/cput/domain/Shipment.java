@@ -1,5 +1,12 @@
 package za.ac.cput.domain;
 
+/*
+Shipment.java
+Shipment module class
+Author: NOMPUMELELO MBATHA (240256727)
+Date: 2026
+ */
+
 public class Shipment {
 
     public enum Status{

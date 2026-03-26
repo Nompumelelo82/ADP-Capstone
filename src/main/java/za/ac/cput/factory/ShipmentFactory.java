@@ -3,6 +3,13 @@ package za.ac.cput.factory;
 import za.ac.cput.domain.Shipment;
 import za.ac.cput.util.Helper;
 
+/*
+ShipmentFactory.java
+Shipment module class
+Author: NOMPUMELELO MBATHA (240256727)
+Date: 2026
+ */
+
 public class ShipmentFactory {
 
     public static Shipment createShipment(String shipmentId, String orderId,

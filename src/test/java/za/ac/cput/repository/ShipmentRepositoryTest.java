@@ -1,7 +1,5 @@
 package za.ac.cput.repository;
 
-
-
 import org.junit.jupiter.api.*;
 import za.ac.cput.domain.Shipment;
 import za.ac.cput.factory.ShipmentFactory;
@@ -10,6 +8,14 @@ import za.ac.cput.repository.ShipmentRepo.ShipmentRepository;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+/*
+ShipmentRepositoryTest.java
+Shipment module class
+Author: NOMPUMELELO MBATHA (240256727)
+Date: 2026
+ */
+
 @TestMethodOrder(MethodOrderer.MethodName.class)
 public class ShipmentRepositoryTest {
 

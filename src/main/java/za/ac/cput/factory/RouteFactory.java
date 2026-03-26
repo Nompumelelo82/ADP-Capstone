@@ -3,6 +3,13 @@ package za.ac.cput.factory;
 import za.ac.cput.domain.Route;
 import za.ac.cput.util.Helper;
 
+/*
+RouteFactory.java
+Route module class
+Author: Ntombozuko Palisa Mchophele(240455789)
+Date: 2026
+ */
+
 public class RouteFactory {
     public static Route createRoute(String routeId, String driverId, String startLocation, String endLocation, float distance, int estimateTime) {
         if (Helper.isEmptyOrNull(routeId) || Helper.isEmptyOrNull(driverId) || Helper.isEmptyOrNull(startLocation) || Helper.isEmptyOrNull(endLocation)) {

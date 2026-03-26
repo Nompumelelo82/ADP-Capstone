@@ -9,6 +9,13 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/*
+CustomerRepositoryTest.java
+Customer module class
+Author: YAMKELA MGCUBHE (222040114)
+Date: 2026
+ */
+
 @TestMethodOrder(MethodOrderer.MethodName.class)
 public class CustomerRepositoryTest {
     private CustomerRepository repository;

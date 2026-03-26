@@ -3,6 +3,13 @@ package za.ac.cput.factory;
 import za.ac.cput.domain.Customer;
 import za.ac.cput.util.Helper;
 
+/*
+CustomerFactory.java
+Customer module class
+Author: YAMKELA MGCUBHE (222040114)
+Date: 2026
+ */
+
 public class CustomerFactory {
     public static Customer createCustomer(String customerId,
                                           String customerName,

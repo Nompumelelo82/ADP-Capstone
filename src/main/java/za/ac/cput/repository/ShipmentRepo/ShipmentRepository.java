@@ -7,6 +7,13 @@ import za.ac.cput.domain.Shipment;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ShipmentRepository.java
+Shipment module class
+Author: NOMPUMELELO MBATHA (240256727)
+Date: 2026
+ */
+
 public class ShipmentRepository implements IShipmentRepository{
 
     private static ShipmentRepository instance;

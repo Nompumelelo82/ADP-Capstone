@@ -8,6 +8,13 @@ import za.ac.cput.domain.Route;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/*
+RouteFactoryTest.java
+Route module class
+Author: Ntombozuko Palisa Mchophele(240455789)
+Date: 2026
+ */
+
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class RouteFactoryTest {
     private static Route route1, route2;

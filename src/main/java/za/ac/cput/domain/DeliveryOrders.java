@@ -2,6 +2,13 @@ package za.ac.cput.domain;
 
 import java.time.LocalDate;
 
+/*
+DeliveryOrders.java
+Delivery Orders module class
+Author: Ryle Peter May (230333907)
+Date: 2026
+ */
+
 public class DeliveryOrders {
 
     public enum Status{

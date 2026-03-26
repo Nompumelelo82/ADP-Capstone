@@ -5,6 +5,13 @@ import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.Driver;
 import static org.junit.jupiter.api.Assertions.*;
 
+/*
+DriverFactoryTest.java
+Driver module class
+Author: Angel Dineo Masonganye (223008869)
+Date: 2026
+ */
+
 public class DriverFactoryTest {
     @Test
     void testBuildDriver_Success() {

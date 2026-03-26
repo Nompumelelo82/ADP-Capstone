@@ -1,5 +1,12 @@
 package za.ac.cput.domain;
 
+/*
+Driver.java
+Driver module class
+Author: Angel Dineo Masonganye (223008869)
+Date: 2026
+ */
+
 public class Driver {
     private String id;
     private String firstName;

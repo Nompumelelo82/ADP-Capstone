@@ -6,6 +6,13 @@ import za.ac.cput.util.Helper;
 
 import java.util.UUID;
 
+/*
+DriverFactory.java
+Driver module class
+Author: Angel Dineo Masonganye (223008869)
+Date: 2026
+ */
+
 public class DriverFactory {
     public static Driver buildDriver(String firstName, String lastName,
                                      String licenseNumber, String phoneNumber,
