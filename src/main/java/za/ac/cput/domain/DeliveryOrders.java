@@ -156,6 +156,19 @@ public class DeliveryOrders {
             return this;
         }
 
+        public Builder copy(DeliveryOrders order){
+            this.orderId=order.orderId;
+            this.customerId=order.customerId;
+            this.orderDate=order.orderDate;
+            this.deliveryDate=order.deliveryDate;
+            this.deliveryStatus=order.deliveryStatus;
+            this.paymentStatus=order.paymentStatus;
+            this.totalCost=order.totalCost;
+            this.specialInstructions=order.specialInstructions;
+
+            return this;
+        }
+
         public DeliveryOrders build(){return new DeliveryOrders(this);}
     }
 
