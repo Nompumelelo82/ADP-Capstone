@@ -63,10 +63,15 @@ public class VehicleRepository implements IVehicleRepository {
             return null;
         }
 
-        vehicleList.remove(existing);
-        vehicleList.add(vehicle);
+        boolean success = vehicleList.remove(existing);
+        if(!success){
+            return null;
+        }
+        if(vehicleList.add(vehicle)){
+            return vehicle;
+        }
 
-                return null;
+        return null;
     }
 
     @Override

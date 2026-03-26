@@ -33,9 +33,9 @@ public class VehicleFactoryTest {
         assertEquals("V001", vehicle.getVehicleId());
         assertEquals("CAA24680", vehicle.getNumberPlate());
         assertEquals(Vehicle.VehicleType.TRUCK, vehicle.getType());
-        assertEquals("16000.0f", vehicle.getCapacity());
+        assertEquals(16000.0f, vehicle.getCapacity());
         assertEquals(Vehicle.VehicleStatus.AVAILABLE, vehicle.getCurrentStatus());
-        assertEquals("18000.0f", vehicle.getMileage());
+        assertEquals(18000.0f, vehicle.getMileage());
         assertNotNull(vehicle.getLastService());
     }
     @Test

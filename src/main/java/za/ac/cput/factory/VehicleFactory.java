@@ -1,7 +1,7 @@
 package za.ac.cput.factory;
 
 import za.ac.cput.domain.Vehicle;
-
+import za.ac.cput.util.Helper;
 
 
 import java.time.LocalDate;
@@ -30,6 +30,10 @@ public class VehicleFactory {
 
 
         if (isNumNeg(capacity) || isNumNeg(mileage)) {
+            return null;
+        }
+
+        if(Helper.isValidType(type)|| Helper.isValidType(currentStatus)){
             return null;
         }
 
