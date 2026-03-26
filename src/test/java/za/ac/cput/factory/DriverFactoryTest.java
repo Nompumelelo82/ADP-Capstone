@@ -17,6 +17,7 @@ public class DriverFactoryTest {
         assertEquals("0821234567", driver.getPhoneNumber());
         assertTrue(driver.isAvailability());
         assertNotNull(driver.getId());
+        System.out.println("Driver created successfully");
     }
 
     @Test
