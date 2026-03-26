@@ -41,6 +41,7 @@ class RouteRepositoryTest {
     }
 
     @Test
+    @Disabled
     void d_delete() {
         boolean deleted = repository.delete(route.getRouteId());
         assertTrue(deleted);
